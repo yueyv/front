@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     ElementTest: typeof import('./src/components/elementTest.vue')['default']
     EventLoop: typeof import('./src/components/eventLoop.vue')['default']
     Icon: typeof import('./src/components/icon.vue')['default']
+    Loading: typeof import('./src/components/loading.vue')['default']
     MoveBox: typeof import('./src/components/moveBox.vue')['default']
     Parent: typeof import('./src/components/parent.vue')['default']
     PiniaTest: typeof import('./src/components/PiniaTest.vue')['default']

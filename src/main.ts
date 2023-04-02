@@ -19,7 +19,7 @@ const setStorage = (key: string, value: any) => {
 const getStorage=(key:string)=>{
     return localStorage.getItem(key)? JSON.parse(localStorage.getItem(key) as string):{}
 }
-const __piniaKey__ ='feiji'
+const __piniaKey__ ='key'
 const piniaPlugin = (options:Options) => {
     return (context: PiniaPluginContext) => {
         const { store } = context
