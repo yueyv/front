@@ -15,7 +15,13 @@ const routes:Array<RouteRecordRaw>=[
     //     component:()=>  import("../components/Antdtest.vue")
     // },
     {
-        path:'/',
+        path:'/login',
+        alias:'/',
+        name:'登录',
+        component:()=>import('../components/login.vue')
+    },
+    {
+        path:'/loading',
         name:'loading',
         component:()=>import('../components/loading.vue')
     }

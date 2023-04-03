@@ -1,6 +1,12 @@
 <script setup lang='ts'>
 import { ref,reactive} from 'vue'
-
+import { onMounted } from 'vue';
+import { router } from '../router';
+onMounted(()=>{
+    setTimeout(()=>{
+        router.back()
+    },10000)
+})
 </script>
 
 <template>
@@ -29,13 +35,14 @@ import { ref,reactive} from 'vue'
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to top left, #ffe29f, #ffa99f, #ff719a);
 }
 .container{
     /* 绝对定位 */
     position: absolute;
     top: 40vh;
     width: 10vw;
-    left:42vw
+    left:calc(45vw+20px)
 }
 .loading{
     /* 执行动画：动画名 时长 贝塞尔曲线 无限次播放 */
@@ -72,7 +79,7 @@ import { ref,reactive} from 'vue'
     position: relative;
     width: 100px;
     height: 20px;
-    background-color: #d9d9d9;
+    background-color: #fafafa;
     border-radius: 50%;
     top: 50px;
     animation: shadow 2.5s cubic-bezier(0.75,0,0.5,1) infinite;

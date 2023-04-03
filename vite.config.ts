@@ -4,7 +4,10 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import unoCss from 'unocss/vite';
+import { fileURLToPath, URL } from 'url';
+import { resolve } from 'path'
 import { presetIcons, presetAttributify, presetUno } from 'unocss';
+import { fillFieldNames } from 'ant-design-vue/lib/vc-cascader/utils/commonUtil'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -27,8 +30,8 @@ export default defineConfig({
 
       }
     }),
-
-  ], server: {
+  ],
+   server: {
     port: 3333,
     open: true,
     cors: true,
@@ -38,6 +41,12 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace('/apiTest', '')
       }
+    }
+  },
+  resolve:{
+    alias:{
+      '@':fileURLToPath(new URL('./src',import.meta.url)),
+      '@images':resolve('./src/assets/img')
     }
   }
 })
