@@ -1,12 +1,25 @@
 <script setup lang='ts'>
 import { ref,reactive} from 'vue'
-import { onMounted } from 'vue';
+import { onMounted,onUnmounted } from 'vue';
 import { router } from '../router';
+import { message } from 'ant-design-vue';
+import { useRoute } from 'vue-router';
+const route=useRoute()
+
 onMounted(()=>{
+    getRouterDate()
     setTimeout(()=>{
+        message.error("失败，返回")
         router.back()
     },10000)
+    message.success()
 })
+const getRouterDate=()=>{
+    console.log(route.params)
+    const password=route.params.password
+    console.log(password)
+}
+
 </script>
 
 <template>
@@ -41,8 +54,7 @@ onMounted(()=>{
     /* 绝对定位 */
     position: absolute;
     top: 40vh;
-    width: 10vw;
-    left:calc(45vw+20px)
+    width: 6vw;
 }
 .loading{
     /* 执行动画：动画名 时长 贝塞尔曲线 无限次播放 */

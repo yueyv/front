@@ -20,6 +20,7 @@ declare module '@vue/runtime-core' {
     MoveBox: typeof import('./src/components/moveBox.vue')['default']
     Parent: typeof import('./src/components/parent.vue')['default']
     PiniaTest: typeof import('./src/components/PiniaTest.vue')['default']
+    Register: typeof import('./src/components/register.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterTest: typeof import('./src/components/routerTest.vue')['default']
     RouterView: typeof import('vue-router')['RouterView']

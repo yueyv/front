@@ -8,7 +8,7 @@ import 'uno.css';
 import { createPinia, PiniaPluginContext } from "pinia"
 import { da } from 'element-plus/es/locale';
 import {router} from './router/index';
-
+// pinia 持久化插件
 type Options={
     key?:string
 }
@@ -35,14 +35,17 @@ const piniaPlugin = (options:Options) => {
     }
 
 }
-
-
 const store = createPinia()
 
 store.use(piniaPlugin({
     key: "pinia"
 }))
 
+const whilelist=['/']
+router.beforeEach((to,from,next)=>{
+    document.title=to.meta.title as string
+    next()
+})
 
 export const app = createApp(App)
 // app.config.globalProperties.$env='dev'

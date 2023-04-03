@@ -2,23 +2,18 @@
 import { message } from 'ant-design-vue';
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router';
-import axios from 'axios';
 // 要操作的元素
 const router=useRouter()
 const password=ref("");
 const account=ref("");
-function check(){
-    axios.post('/api/login',{account:`${account.value}`,password:`${password.value}`})
-    .then(result=>{
-        console.log(result.data)
-    })
-    .catch(err=>{
-        console.log(err)
-    })
-}
-function login(){
+const second_password=ref("")
+function register(){
+    // setTimeout(()=>{
+    //     router.push('/loading')
+    // },1000)
+    // 验证输入规则
     new Promise((res,rej)=>{
-        if(password.value==""||account.value==""){
+        if(password.value==""||account.value==""||second_password.value==""){
         rej("请输入完整")
     }
     else if(account.value.length>=20||account.value.length<=8){
@@ -27,19 +22,19 @@ function login(){
     else if(password.value.length>=20||password.value.length<=8){
         rej('密码长度应在8-20位')
     } 
+    else if(password.value!==second_password.value){
+        rej('第二次输入的密码应与第一次相同')
+    }
     else{
-        router.push({
-            name:'loading',
-        })
-        check();
+        router.push("/loading")
     } 
     }).catch(err=>{
         message.error(err)
     })   
     
 }
-function register(){
-    router.push('/register')
+function login(){
+    router.push('/login')
 }
 </script>
 
@@ -48,10 +43,11 @@ function register(){
         <div class="container">
             <h1>Welcome</h1>
             <div class="form">
-                <input type="text" v-model="account" autofocus placeholder="您的账号">
-                <input type="password" v-model="password" placeholder="您的密码">
-                <button class="btn-login" @click="login()">登录</button>
-                <button class="btn-login" @click="register()">切换注册</button>
+                <input type="text" v-model="account" maxlength="20" minlength="8" autofocus placeholder="您的账号">
+                <input type="password" v-model="password" maxlength="20" minlength="8" placeholder="您的密码">
+                <input type="password" v-model="second_password" maxlength="20" minlength="8" placeholder="确认密码">
+                <button class="btn-login" @click="register()">注册</button>
+                <button class="btn-login" @click="login()">已有账号？点击登录</button>
             </div>
         </div>
         <ul class="bg-squares">

@@ -36,10 +36,10 @@ export default defineConfig({
     open: true,
     cors: true,
     proxy: {
-      '/apiTest': {
+      '/api': {
         target: 'http://114.132.50.228:3000',
         changeOrigin: true,
-        rewrite: (path) => path.replace('/apiTest', '')
+        rewrite: (path) => path.replace('/api', '')
       }
     }
   },
