@@ -40,12 +40,20 @@ const routes:Array<RouteRecordRaw>=[
     },
     {
         path:'/register',
-        alias:'/',
         name:'注册',
         meta:{
             title:'注册'
         },
         component:()=>import('../components/register.vue')
+    },
+    {
+        path:'/home',
+        alias:'/home',
+        name:'主页',
+        meta:{
+            title:'mywebsite'
+        },
+        component:()=>import('../pages/home.vue')
     },
 ]
 export const router=createRouter({

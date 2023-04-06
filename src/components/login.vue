@@ -4,41 +4,48 @@ import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 // 要操作的元素
-const router=useRouter()
-const password=ref("");
-const account=ref("");
-function check(){
-    axios.post('/api/login',{account:`${account.value}`,password:`${password.value}`})
-    .then(result=>{
-        console.log(result.data)
-    })
-    .catch(err=>{
-        console.log(err)
-    })
-}
-function login(){
-    new Promise((res,rej)=>{
-        if(password.value==""||account.value==""){
-        rej("请输入完整")
+const router = useRouter()
+const password = ref("129218219");
+const account = ref("yueyvlunhui");
+async function response(result: any) {
+    if (result.status === 200) {
+        await sessionStorage.setItem("userId", JSON.stringify(result.data.data))
+        // message.success(sessionStorage.getItem("userId"))
     }
-    else if(account.value.length>=20||account.value.length<=8){
-        rej('账号长度应在8-20位')
-    } 
-    else if(password.value.length>=20||password.value.length<=8){
-        rej('密码长度应在8-20位')
-    } 
-    else{
-        router.push({
-            name:'loading',
-        })
-        check();
-    } 
-    }).catch(err=>{
-        message.error(err)
-    })   
-    
+    setTimeout(() => {
+        message.info(result.data.message)
+    }, 1000)
 }
-function register(){
+async function check() {
+    await axios.post('/api/login', { account: `${account.value}`, password: `${password.value}` })
+        .then(response)
+        .catch(err => {
+            console.log(err)
+        })
+}
+function login() {
+    new Promise((res, rej) => {
+        if (password.value == "" || account.value == "") {
+            rej("请输入完整")
+        }
+        else if (account.value.length > 20 || account.value.length < 8) {
+            rej('账号长度应在8-20位')
+        }
+        else if (password.value.length > 20 || password.value.length < 8) {
+            rej('密码长度应在8-20位')
+        }
+        else {
+            router.push({
+                name: 'loading',
+            })
+            check();
+        }
+    }).catch(err => {
+        message.error(err)
+    })
+
+}
+function register() {
     router.push('/register')
 }
 </script>
@@ -70,8 +77,6 @@ function register(){
 </template>
 
 <style scoped lang='less'>
-
-
 .box {
     height: 100vh;
     width: 100vw;
@@ -84,7 +89,7 @@ function register(){
     /* 溢出隐藏 */
     overflow: hidden;
 
-    
+
 }
 
 .container {
@@ -272,4 +277,5 @@ function register(){
     100% {
         transform: translateY(-120vh) rotate(600deg);
     }
-}</style>
+}
+</style>

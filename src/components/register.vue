@@ -2,38 +2,56 @@
 import { message } from 'ant-design-vue';
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 // 要操作的元素
-const router=useRouter()
-const password=ref("");
-const account=ref("");
-const second_password=ref("")
-function register(){
+const router = useRouter()
+const password = ref("129218219");
+const account = ref("yueyvlun");
+const second_password = ref("129218219")
+async function response(result: any) {
+    if (result.status === 200) {
+        await sessionStorage.setItem("userId", JSON.stringify(result.data.data))
+        // message.success(sessionStorage.getItem("userId"))
+    }
+    setTimeout(() => {
+        message.info(result.data.message)
+    }, 1000)
+}
+async function check() {
+    await axios.post('/api/register', { account: `${account.value}`, password: `${password.value}` })
+        .then(response)
+        .catch(err => {
+            console.log(err)
+        })
+}
+function register() {
     // setTimeout(()=>{
     //     router.push('/loading')
     // },1000)
     // 验证输入规则
-    new Promise((res,rej)=>{
-        if(password.value==""||account.value==""||second_password.value==""){
-        rej("请输入完整")
-    }
-    else if(account.value.length>=20||account.value.length<=8){
-        rej('账号长度应在8-20位')
-    } 
-    else if(password.value.length>=20||password.value.length<=8){
-        rej('密码长度应在8-20位')
-    } 
-    else if(password.value!==second_password.value){
-        rej('第二次输入的密码应与第一次相同')
-    }
-    else{
-        router.push("/loading")
-    } 
-    }).catch(err=>{
+    new Promise((res, rej) => {
+        if (password.value == "" || account.value == "" || second_password.value == "") {
+            rej("请输入完整")
+        }
+        else if (account.value.length > 20 || account.value.length < 8) {
+            rej('账号长度应在8-20位')
+        }
+        else if (password.value.length > 20 || password.value.length < 8) {
+            rej('密码长度应在8-20位')
+        }
+        else if (password.value !== second_password.value) {
+            rej('第二次输入的密码应与第一次相同')
+        }
+        else {
+            router.push("/loading")
+            check()
+        }
+    }).catch(err => {
         message.error(err)
-    })   
-    
+    })
+
 }
-function login(){
+function login() {
     router.push('/login')
 }
 </script>
@@ -66,8 +84,6 @@ function login(){
 </template>
 
 <style scoped lang='less'>
-
-
 .box {
     height: 100vh;
     width: 100vw;
@@ -80,7 +96,7 @@ function login(){
     /* 溢出隐藏 */
     overflow: hidden;
 
-    
+
 }
 
 .container {
@@ -268,4 +284,5 @@ function login(){
     100% {
         transform: translateY(-120vh) rotate(600deg);
     }
-}</style>
+}
+</style>
