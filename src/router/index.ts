@@ -7,23 +7,10 @@ declare module 'vue-router'{
 }
 
 const routes:Array<RouteRecordRaw>=[
-    // {
-    //     path:'/',
-    //     name:'index',
-    //     component:()=>  import("../components/moveBox.vue")
-    // },
-    // {
-    //     path:'/element',
-    //     name:"element",
-    //     component:()=>  import("../components/elementTest.vue")
-    // },
-    // {
-    //     path:'/antd',
-    //     component:()=>  import("../components/Antdtest.vue")
-    // },
+   
     {
         path:'/login',
-        alias:'/',
+        // alias:'/',
         name:'登录',
         meta:{
             title:'登录'
@@ -48,7 +35,7 @@ const routes:Array<RouteRecordRaw>=[
     },
     {
         path:'/home',
-        alias:'/home',
+        alias:'/',
         name:'主页',
         meta:{
             title:'mywebsite'

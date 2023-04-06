@@ -11,9 +11,11 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Antdtest: typeof import('./src/components/Antdtest.vue')['default']
     Authentication: typeof import('./src/components/Authentication.vue')['default']
+    Card: typeof import('./src/components/card.vue')['default']
     Child: typeof import('./src/components/child.vue')['default']
     ElementTest: typeof import('./src/components/elementTest.vue')['default']
     EventLoop: typeof import('./src/components/eventLoop.vue')['default']
+    FirstCard: typeof import('./src/components/firstCard.vue')['default']
     Icon: typeof import('./src/components/icon.vue')['default']
     Loading: typeof import('./src/components/loading.vue')['default']
     Login: typeof import('./src/components/login.vue')['default']

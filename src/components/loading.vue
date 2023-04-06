@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router';
 import { message } from 'ant-design-vue';
 const router = useRouter()
 const login = setTimeout(() => {
-    if ((sessionStorage.getItem("userId")?.length ??1) > 2) {
+    if ((sessionStorage.getItem("userId")?.length ??1) > 2&&(sessionStorage.getItem("userId")?.length ??51)<50) {
         message.success("登录成功")
         router.push('/home')    
     }else{
