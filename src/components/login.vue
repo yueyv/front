@@ -51,6 +51,9 @@ function register() {
 </script>
 
 <template>
+
+        
+    
     <div class="box">
         <div class="container">
             <h1>Welcome</h1>
@@ -74,6 +77,7 @@ function register() {
             <li></li>
         </ul>
     </div>
+
 </template>
 
 <style scoped lang='less'>
@@ -170,7 +174,7 @@ function register() {
 /* 背景方块 */
 .bg-squares {
     list-style: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
