@@ -2,23 +2,22 @@
 import { ref, reactive } from 'vue'
 import card from "../components/firstCard.vue"
 import { message } from 'ant-design-vue';
+import headerbox from '../components/header.vue'
 // const emit=defineEmits<>('nav')
 const index = ref(0)
-const lists = ref([1, 2, 3, 4, 5, 6, 7, 8, 9,10,14])
+const lists = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14])
 
 
 </script>
 
 <template>
-    
     <div class="main">
-         <a href="#5"><button >a</button></a>
-         <router-link to="login"><a-button>login</a-button></router-link>
+        <!-- <a href="#5">a</a> -->
+        <headerbox></headerbox>
         <div class="card">
             <card v-for="list in lists" :img="list" :key="list" :id="list"></card>
         </div>
     </div>
-    
 </template>
 
 <style scoped lang='less'>
@@ -30,6 +29,8 @@ const lists = ref([1, 2, 3, 4, 5, 6, 7, 8, 9,10,14])
     justify-content: center;
     flex-flow: column;
 }
+
+
 
 .card {
     /* 100%窗口高度 */
@@ -50,6 +51,6 @@ const lists = ref([1, 2, 3, 4, 5, 6, 7, 8, 9,10,14])
     // transform: translate(-50%, -50%);
     // overflow: scroll;
 
-    
+
 }
 </style>

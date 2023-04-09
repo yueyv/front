@@ -12,9 +12,9 @@ async function response(result: any) {
         await sessionStorage.setItem("userId", JSON.stringify(result.data.data))
         // message.success(sessionStorage.getItem("userId"))
     }
-    setTimeout(() => {
-        message.info(result.data.message)
-    }, 1000)
+
+    console.log(result.data.message)
+
 }
 async function check() {
     await axios.post('/api/login', { account: `${account.value}`, password: `${password.value}` })
@@ -48,12 +48,12 @@ function login() {
 function register() {
     router.push('/register')
 }
+onMounted(() => {
+    check()
+})
 </script>
 
 <template>
-
-        
-    
     <div class="box">
         <div class="container">
             <h1>Welcome</h1>
@@ -77,7 +77,6 @@ function register() {
             <li></li>
         </ul>
     </div>
-
 </template>
 
 <style scoped lang='less'>

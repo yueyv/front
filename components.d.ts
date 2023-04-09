@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     ElementTest: typeof import('./src/components/elementTest.vue')['default']
     EventLoop: typeof import('./src/components/eventLoop.vue')['default']
     FirstCard: typeof import('./src/components/firstCard.vue')['default']
+    Header: typeof import('./src/components/header.vue')['default']
     Icon: typeof import('./src/components/icon.vue')['default']
     Loading: typeof import('./src/components/loading.vue')['default']
     Login: typeof import('./src/components/login.vue')['default']
