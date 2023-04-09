@@ -1,13 +1,21 @@
 <script setup lang='ts'>
 import { ref, reactive } from 'vue'
-import card from "../components/firstCard.vue"
+import card from "../components/firstCard/firstCard.vue"
 import { message } from 'ant-design-vue';
-import headerbox from '../components/header.vue'
+import headerbox from '../components/header/header.vue'
 // const emit=defineEmits<>('nav')
-const index = ref(0)
-const lists = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14])
+const index = 30
+const lists = ref()
 
-
+function changeList() {
+    lists.value = new Array()
+    for (let i = 0; i <= index; i++) {
+        lists.value.push(i)
+    }
+}
+onBeforeMount(() => {
+    changeList()
+})
 </script>
 
 <template>

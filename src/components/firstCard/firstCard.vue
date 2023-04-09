@@ -13,15 +13,20 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 function getImageUrl(param: number) {
-    return new URL(`../assets/images/${param}.jpg`, import.meta.url).href;
+    return new URL(`../../assets/images/${param}.jpg`, import.meta.url).href;
 }
+function missImg(){
+    return 'this.src='+'"'+getImageUrl(0)+'"'
+}
+
+
 </script>
 
 <template>
     <div class="container">
         <div class="card">
             <div class="img-box">
-                <img :src=getImageUrl(img) alt="">
+                <img :src="getImageUrl(img)"  :onerror="missImg()">
             </div>
             <div class="text-box">
                 <h2>{{ title }} {{ img }}</h2>
@@ -56,11 +61,14 @@ function getImageUrl(param: number) {
     /* 阴影 */
     box-shadow: 0 5px 200px rgba(0, 0, 0, 0.5);
     /* 动画过渡 */
-    transition: 0.3s ease-in-out;
+    
 }
 
 .container .card:hover {
     height: 320px;
+    position: absolute;
+    z-index: 2;
+    transition: 0.3s ease-out;
 }
 
 .container .card .img-box {
@@ -98,7 +106,7 @@ function getImageUrl(param: number) {
     visibility: hidden;
     /* 不透明度 */
     opacity: 0;
-    transition: 0.3s ease-in-out;
+    transition: 0.3s ease-out;
 }
 
 .container .card .text-box p {
@@ -116,5 +124,6 @@ function getImageUrl(param: number) {
     margin-top: -40px;
     /* 动画延迟0.2秒 */
     transition-delay: 0.2s;
+    
 }
 </style>

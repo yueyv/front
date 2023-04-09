@@ -15,7 +15,7 @@ const routes:Array<RouteRecordRaw>=[
         meta:{
             title:'登录'
         },
-        component:()=>import('../components/login.vue')
+        component:()=>import('../components/login/login.vue')
     },
     {
         path:'/loading',
@@ -23,7 +23,7 @@ const routes:Array<RouteRecordRaw>=[
         meta:{
             title:'验证中',
         },
-        component:()=>import('../components/loading.vue')
+        component:()=>import('../components/login/loading.vue')
     },
     {
         path:'/register',
@@ -31,7 +31,7 @@ const routes:Array<RouteRecordRaw>=[
         meta:{
             title:'注册'
         },
-        component:()=>import('../components/register.vue')
+        component:()=>import('../components/login/register.vue')
     },
     {
         path:'/home',

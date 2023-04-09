@@ -29,6 +29,7 @@ function login(){
     box-shadow:5ch;
     // visibility: hidden;
     z-index: 3;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to top left, #ffe29f, #ffa99f, #ff719a);
     img{
         display: inline-block;
@@ -49,6 +50,8 @@ function login(){
     &:hover{
         visibility: visible;
         background: linear-gradient(to bottom right, #ffe29f, #ffa99f, #ff719a);
+        transform: all 0.6s linear;
+        transition-delay:0.5s ;
     }
 }
 </style>
