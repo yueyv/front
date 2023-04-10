@@ -12,7 +12,7 @@ const login = setTimeout(() => {
         message.error("失败，返回")
         router.back()
     }
-}, 2000)
+}, 3000)
 
 onUnmounted(() => {
     clearTimeout(login)

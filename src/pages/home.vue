@@ -1,27 +1,38 @@
 <script setup lang='ts'>
 import { ref, reactive } from 'vue'
 import card from "../components/firstCard/firstCard.vue"
-import { message } from 'ant-design-vue';
 import headerbox from '../components/header/header.vue'
+import innerTime from '../components/header/innerTime.vue';
+import { message } from 'ant-design-vue';
 // const emit=defineEmits<>('nav')
 const index = 30
 const lists = ref()
-
+const inner = ref("01:00")
+const time = ref<boolean>(true)
 function changeList() {
     lists.value = new Array()
     for (let i = 0; i <= index; i++) {
         lists.value.push(i)
     }
 }
+
+
 onBeforeMount(() => {
     changeList()
+    leave()
 })
+function leave(){
+    setTimeout(()=>{
+        time.value=false
+    },60000)
+}
 </script>
 
 <template>
     <div class="main">
         <!-- <a href="#5">a</a> -->
-        <headerbox></headerbox>
+        <innerTime v-show="time" :innertime="inner" @click="time = false"></innerTime>
+        <headerbox @mouseenter="time = true" @mouseleave="leave()" ></headerbox>
         <div class="card">
             <card v-for="list in lists" :img="list" :key="list" :id="list"></card>
         </div>

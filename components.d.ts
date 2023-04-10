@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     FirstCard: typeof import('./src/components/firstCard/firstCard.vue')['default']
     Header: typeof import('./src/components/header/header.vue')['default']
     Icon: typeof import('./src/components/icon.vue')['default']
+    InnerTime: typeof import('./src/components/header/innerTime.vue')['default']
     Loading: typeof import('./src/components/login/loading.vue')['default']
     Login: typeof import('./src/components/login/login.vue')['default']
     MoveBox: typeof import('./src/components/moveBox.vue')['default']
