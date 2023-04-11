@@ -15,8 +15,6 @@ function changeList() {
         lists.value.push(i)
     }
 }
-
-
 onBeforeMount(() => {
     changeList()
     leave()
