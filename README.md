@@ -27,3 +27,9 @@ element-plus ant-design-vue
 ## async
 
 async await  nextTick
+
+promise
+
+settimeout
+
+cleartimeout
