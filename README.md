@@ -22,7 +22,7 @@ image to base64
 
 ## UI
 
-element-plus ant-design-vue
+element-plus ant-design-vue message.info
 
 ## async
 
