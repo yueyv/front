@@ -8,7 +8,7 @@
 
     tailWindCss
 
-    animal.css
+    animate.css
 
 ## Dependencies
 
@@ -24,7 +24,7 @@ image to base64
 
 ## UI
 
-element-plus ant-design-vue message.info 
+element-plus ant-design-vue message.info
 
 ## async
 
