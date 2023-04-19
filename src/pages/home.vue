@@ -34,6 +34,7 @@ function leave(){
         <div class="card">
             <card v-for="list in lists" :img="list" :key="list" :id="list"></card>
         </div>
+        <footer style="color: aqua; font-size: 15px; padding-bottom: 20px;"><a href="https://beian.miit.gov.cn/">皖ICP备2022016562号-1</a></footer>
     </div>
 </template>
 
@@ -45,8 +46,11 @@ function leave(){
     align-items: center;
     justify-content: center;
     flex-flow: column;
+    flex: 1;
 }
-
+a:hover{
+    color: aliceblue;
+}
 
 
 .card {
@@ -61,6 +65,7 @@ function leave(){
     width: 80vw;
     margin-top: 20vh;
     margin-bottom: 20vh;
+    flex: 1;
     // top: 80vh;
     // position: fixed;
     // left: 50%;

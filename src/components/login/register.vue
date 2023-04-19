@@ -5,9 +5,9 @@ import { useRouter } from 'vue-router';
 import axios from 'axios';
 // 要操作的元素
 const router = useRouter()
-const password = ref("129218219");
-const account = ref("yueyvlun");
-const second_password = ref("129218219")
+const password = ref("");
+const account = ref("");
+const second_password = ref("")
 async function response(result: any) {
     if (result.status === 200) {
         await sessionStorage.setItem("userId", JSON.stringify(result.data.data))
