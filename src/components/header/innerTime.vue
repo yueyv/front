@@ -19,6 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style scoped lang='less'>
 .box {
+    transition: all 1s ;
     z-index: 2;
     width: 200px;
     top: 5vh;
@@ -31,6 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
     box-shadow:5ch;
     // visibility: hidden;
     z-index: 3;
+
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to top left, #ffe29f, #ffa99f, #ff719a);
     color: #ccfffafd;
