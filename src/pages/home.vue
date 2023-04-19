@@ -31,7 +31,7 @@ function leave(){
     <div class="main">
         <!-- <a href="#5">a</a> -->
         <innerTime  :innertime="inner" @click="time = false" class='animate__animated' :class="{'animate__backInLeft':time,'animate__backOutLeft':!time} "></innerTime>
-        <headerbox @mouseenter="time = true" @mouseleave="leave()" ></headerbox>
+        <headerbox @mouseenter="time = true" @mouseleave="leave()" class="animate__animated animate__backInRight"></headerbox>
         <div class="card">
             <card v-for="list in lists" :img="list" :key="list" :id="list"></card>
         </div>

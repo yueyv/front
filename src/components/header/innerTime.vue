@@ -51,8 +51,6 @@ const props = withDefaults(defineProps<Props>(), {
     &:hover{
         visibility: visible;
         background: linear-gradient(to bottom right, #ffe29f, #ffa99f, #ff719a);
-        transform: all 0.6s linear;
-        transition: all 1s;
     }
 }
 </style>

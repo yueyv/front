@@ -28,6 +28,7 @@ function login() {
 
 <style scoped lang='less'>
 .box {
+    transition: all 1s ;
     z-index: 2;
     width: 200px;
     top: 5vh;
