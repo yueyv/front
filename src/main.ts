@@ -5,6 +5,7 @@ import ElementPlus from 'element-plus'
 import 'ant-design-vue/dist/antd.css';
 import Antd from 'ant-design-vue';
 import 'uno.css';
+import 'animate.css';
 import { createPinia, PiniaPluginContext } from "pinia"
 import { da } from 'element-plus/es/locale';
 import {router} from './router/index';

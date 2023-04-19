@@ -3,6 +3,7 @@ import { ref, reactive } from 'vue'
 import card from "../components/firstCard/firstCard.vue"
 import headerbox from '../components/header/header.vue'
 import innerTime from '../components/header/innerTime.vue';
+import footer_vue from '../components/footer/footer.vue';
 import { message } from 'ant-design-vue';
 // const emit=defineEmits<>('nav')
 const index = 30
@@ -22,19 +23,19 @@ onBeforeMount(() => {
 function leave(){
     setTimeout(()=>{
         time.value=false
-    },60000)
+    },5*60000)
 }
 </script>
 
 <template>
     <div class="main">
         <!-- <a href="#5">a</a> -->
-        <innerTime v-show="time" :innertime="inner" @click="time = false"></innerTime>
+        <innerTime  :innertime="inner" @click="time = false" class='animate__animated' :class="{'animate__backInLeft':time,'animate__backOutLeft':!time} "></innerTime>
         <headerbox @mouseenter="time = true" @mouseleave="leave()" ></headerbox>
         <div class="card">
             <card v-for="list in lists" :img="list" :key="list" :id="list"></card>
         </div>
-        <footer style="color: aqua; font-size: 15px; padding-bottom: 20px;"><a href="https://beian.miit.gov.cn/">皖ICP备2022016562号-1</a></footer>
+        <footer_vue></footer_vue>
     </div>
 </template>
 
@@ -54,25 +55,15 @@ a:hover{
 
 
 .card {
-    /* 100%窗口高度 */
-    /* 弹性布局 水平垂直居中 */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 300px);
 
-    // justify-content: center;
-    // align-items: center;
-    /* 渐变背景 */
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,2fr));
+
+
     width: 80vw;
     margin-top: 20vh;
     margin-bottom: 20vh;
     flex: 1;
-    // top: 80vh;
-    // position: fixed;
-    // left: 50%;
-    // top: 50%;
-    // transform: translate(-50%, -50%);
-    // overflow: scroll;
-
 
 }
 </style>

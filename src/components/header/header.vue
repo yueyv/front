@@ -1,11 +1,22 @@
 <script setup lang='ts'>
+import { message } from 'ant-design-vue';
 import { ref, reactive } from 'vue'
 import { useRouter } from "vue-router";
-const router=useRouter()
-let userId=window.atob(JSON.parse(sessionStorage.getItem("userId")??JSON.stringify({"token":`${window.btoa("Not logined in")}`})).token) 
-function login(){
-  router.push('/login')
+const router = useRouter()
+// 去除错误存储
+if ((sessionStorage.getItem("userId")?.length ?? 1) <= 2 || (sessionStorage.getItem("userId")?.length ?? 51) >= 50) {
+    if (sessionStorage.getItem('userId')) {
+        sessionStorage.removeItem("userId")
+    } 
 }
+
+let userId = window.atob(JSON.parse(sessionStorage.getItem("userId") ?? JSON.stringify({ "token": `${window.btoa("Not logined in")}` })).token)
+function login() {
+    router.push('/login')
+}
+
+
+
 </script>
 
 <template>
@@ -26,20 +37,22 @@ function login(){
     background-color: #ff719a;
     border-radius: 20px;
     display: flex;
-    box-shadow:5ch;
+    box-shadow: 5ch;
     // visibility: hidden;
     z-index: 3;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to top left, #ffe29f, #ffa99f, #ff719a);
-    img{
+
+    img {
         display: inline-block;
         position: absolute;
         left: 25px;
-        top :10px;
+        top: 10px;
         width: 32px;
         height: 32px;
-        
+
     }
+
     h1 {
         text-align: center;
         line-height: 50px;
@@ -47,11 +60,12 @@ function login(){
         position: absolute;
         left: 80px;
     }
-    &:hover{
+
+    &:hover {
         visibility: visible;
         background: linear-gradient(to bottom right, #ffe29f, #ffa99f, #ff719a);
         transform: all 0.6s linear;
-        transition-delay:0.5s ;
+        transition-delay: 0.5s;
     }
 }
 </style>

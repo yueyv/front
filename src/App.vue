@@ -14,5 +14,4 @@ import parent from './components/parent.vue';
   width: 0 !important;
   height: 0;
 }
-
 </style>

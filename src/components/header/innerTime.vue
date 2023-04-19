@@ -52,7 +52,7 @@ const props = withDefaults(defineProps<Props>(), {
         visibility: visible;
         background: linear-gradient(to bottom right, #ffe29f, #ffa99f, #ff719a);
         transform: all 0.6s linear;
-        transition-delay:0.5s ;
+        transition: all 1s;
     }
 }
 </style>
