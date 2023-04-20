@@ -1,7 +1,10 @@
 <script setup lang='ts'>
 import { message } from 'ant-design-vue';
 import { ref, reactive } from 'vue'
-
+import { NavigationFailureType } from 'vue-router';
+import { isNavigationFailure } from 'vue-router';
+import { useRouter } from "vue-router";
+const router = useRouter()
 interface Props {
     img: number,
     title?: string,
@@ -12,12 +15,30 @@ const props = withDefaults(defineProps<Props>(), {
     title: '不存在',
     content: '不存在'
 })
+async function clickCard(list: number, title: string) {
+    router.addRoute({
+        path: `/card/${list}`,
+        name:`${title}`,
+        meta: {
+            title: `${title}`
+        },
+        component: () => import(`./card/${list}.vue` /* @vite-ignore */)
+    })
+    const navigationResult =await router.push({
+        path: `/card/${list}`
+    })
+    if(isNavigationFailure(navigationResult,NavigationFailureType.aborted)){
+        console.log(233)
+    }
+
+
+}
 // 动态图片
 function getImageUrl(param: number) {
-    
-        return new URL(`../../assets/images/${param}.jpg`, import.meta.url).href;
-    
-     
+
+    return new URL(`../../assets/images/${param}.jpg`, import.meta.url).href;
+
+
 }
 // 丢失图片
 // function missImg(){
@@ -28,10 +49,10 @@ function getImageUrl(param: number) {
 </script>
 
 <template>
-    <div class="container">
+    <div class="container" @click="clickCard(img, title)">
         <div class="card">
             <div class="img-box">
-                <img v-lazy="getImageUrl(img)" >
+                <img v-lazy="getImageUrl(img)">
             </div>
             <div class="text-box">
                 <h2>{{ title }} {{ img }}</h2>
@@ -66,7 +87,7 @@ function getImageUrl(param: number) {
     /* 阴影 */
     box-shadow: 0 5px 200px rgba(0, 0, 0, 0.5);
     /* 动画过渡 */
-    
+
 }
 
 .container .card:hover {
@@ -129,6 +150,6 @@ function getImageUrl(param: number) {
     margin-top: -40px;
     /* 动画延迟0.2秒 */
     transition-delay: 0.2s;
-    
+
 }
 </style>

@@ -47,3 +47,13 @@ export const router=createRouter({
     history:createWebHistory(),
     routes
 })
+// 路由守卫
+router.beforeEach((to,from)=>{
+
+    
+    if(router.hasRoute(to.name??'404')){
+        return true
+    }else{
+        return false
+    }
+})

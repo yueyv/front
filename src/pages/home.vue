@@ -5,11 +5,13 @@ import headerbox from '../components/header/header.vue'
 import innerTime from '../components/header/innerTime.vue';
 import footer_vue from '../components/footer/footer.vue';
 import { message } from 'ant-design-vue';
+
 // const emit=defineEmits<>('nav')
 const index = 30
 const lists = ref()
 const inner = ref("01:00")
 const time = ref<boolean>(true)
+
 function changeList() {
     lists.value = new Array()
     for (let i = 0; i <= index; i++) {
@@ -25,9 +27,7 @@ function leave() {
         time.value = false
     }, 5 * 60000)
 }
-function clickCard(){
 
-}
 </script>
 
 <template>
@@ -41,7 +41,7 @@ function clickCard(){
         </header>
 
         <div class="card">
-            <card v-for="list in lists" :img="list"  :key="list" :id="list" @click="clickCard()"></card>
+            <card v-for="list in lists" :img="list"  :key="list" :id="list" ></card>
         </div>
         <footer>
             <footer_vue></footer_vue>
