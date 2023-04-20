@@ -27,6 +27,7 @@ async function clickCard(list: number, title: string) {
     const navigationResult =await router.push({
         path: `/card/${list}`
     })
+    
     if(isNavigationFailure(navigationResult,NavigationFailureType.aborted)){
         console.log(233)
     }
@@ -55,7 +56,7 @@ function getImageUrl(param: number) {
                 <img v-lazy="getImageUrl(img)">
             </div>
             <div class="text-box">
-                <h2>{{ title }} {{ img }}</h2>
+                <h2>{{ title }}</h2>
                 <p>{{ content }}</p>
             </div>
         </div>

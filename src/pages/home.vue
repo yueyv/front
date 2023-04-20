@@ -11,7 +11,7 @@ const index = 30
 const lists = ref()
 const inner = ref("01:00")
 const time = ref<boolean>(true)
-
+const title=["不存在","圆心动画"]
 function changeList() {
     lists.value = new Array()
     for (let i = 0; i <= index; i++) {
@@ -41,7 +41,7 @@ function leave() {
         </header>
 
         <div class="card">
-            <card v-for="list in lists" :img="list"  :key="list" :id="list" ></card>
+            <card v-for="list in lists" :img="list" :title="title[list]"  :key="list" :id="list" ></card>
         </div>
         <footer>
             <footer_vue></footer_vue>

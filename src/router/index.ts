@@ -52,8 +52,12 @@ router.beforeEach((to,from)=>{
 
     
     if(router.hasRoute(to.name??'404')){
+
         return true
+        
     }else{
+        console.log(233);
+        
         return false
     }
 })
