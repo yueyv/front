@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { ref, reactive } from 'vue'
 import { useAttrs } from 'vue';
-import useBase64 from '../hooks/useBase64'
+import useBase64 from '../../hooks/useBase64'
 useBase64({
     el:'#img'
 }).then(res=>{

@@ -20,22 +20,33 @@ onBeforeMount(() => {
     changeList()
     leave()
 })
-function leave(){
-    setTimeout(()=>{
-        time.value=false
-    },5*60000)
+function leave() {
+    setTimeout(() => {
+        time.value = false
+    }, 5 * 60000)
+}
+function clickCard(){
+
 }
 </script>
 
 <template>
     <div class="main">
         <!-- <a href="#5">a</a> -->
-        <innerTime  :innertime="inner" @click="time = false" class='animate__animated' :class="{'animate__backInLeft':time,'animate__backOutLeft':!time} "></innerTime>
-        <headerbox @mouseenter="time = true" @mouseleave="leave()" class="animate__animated animate__backInRight"></headerbox>
+        <header>
+            <innerTime :innertime="inner" @click="time = false" class='animate__animated'
+                :class="{ 'animate__backInLeft': time, 'animate__backOutLeft': !time }"></innerTime>
+            <headerbox @mouseenter="time = true" @mouseleave="leave()" class="animate__animated animate__rubberBand">
+            </headerbox>
+        </header>
+
         <div class="card">
-            <card v-for="list in lists" :img="list" :key="list" :id="list"></card>
+            <card v-for="list in lists" :img="list"  :key="list" :id="list" @click="clickCard()"></card>
         </div>
-        <footer_vue></footer_vue>
+        <footer>
+            <footer_vue></footer_vue>
+        </footer>
+
     </div>
 </template>
 
@@ -49,7 +60,8 @@ function leave(){
     flex-flow: column;
     flex: 1;
 }
-a:hover{
+
+a:hover {
     color: aliceblue;
 }
 
@@ -57,13 +69,11 @@ a:hover{
 .card {
 
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(300px,2fr));
-
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) minmax(300px, 1fr);
+    
 
     width: 80vw;
     margin-top: 20vh;
     margin-bottom: 20vh;
-    flex: 1;
 
-}
-</style>
+}</style>

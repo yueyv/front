@@ -10,6 +10,10 @@
 
     animate.css
 
+图片懒加载
+
+vue-lazyload
+
 ## Dependencies
 
 ## technique

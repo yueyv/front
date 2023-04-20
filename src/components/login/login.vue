@@ -9,7 +9,7 @@ const password = ref("");
 const account = ref("");
 async function response(result: any) {
     if (result.status === 200) {
-        await sessionStorage.setItem("userId", JSON.stringify(result.data.data))
+        sessionStorage.setItem("userId", JSON.stringify(result.data.data))
         // message.success(sessionStorage.getItem("userId"))
     }
 

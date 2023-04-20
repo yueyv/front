@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import { message } from 'ant-design-vue';
 import { ref, reactive } from 'vue'
+
 interface Props {
     img: number,
     title?: string,
@@ -11,13 +12,17 @@ const props = withDefaults(defineProps<Props>(), {
     title: '不存在',
     content: '不存在'
 })
-
+// 动态图片
 function getImageUrl(param: number) {
-    return new URL(`../../assets/images/${param}.jpg`, import.meta.url).href;
+    
+        return new URL(`../../assets/images/${param}.jpg`, import.meta.url).href;
+    
+     
 }
-function missImg(){
-    return 'this.src='+'"'+getImageUrl(0)+'"'
-}
+// 丢失图片
+// function missImg(){
+//     return 'this.src='+'"'+getImageUrl(0)+'"'
+// }
 
 
 </script>
@@ -26,7 +31,7 @@ function missImg(){
     <div class="container">
         <div class="card">
             <div class="img-box">
-                <img :src="getImageUrl(img)"  :onerror="missImg()">
+                <img v-lazy="getImageUrl(img)" >
             </div>
             <div class="text-box">
                 <h2>{{ title }} {{ img }}</h2>

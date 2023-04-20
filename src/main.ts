@@ -8,6 +8,8 @@ import 'uno.css';
 import 'animate.css';
 import { createPinia, PiniaPluginContext } from "pinia"
 import { da } from 'element-plus/es/locale';
+import VueLazyload from 'vue-lazyload'
+
 import {router} from './router/index';
 // pinia 持久化插件
 type Options={
@@ -53,5 +55,11 @@ export const app = createApp(App)
 app.use(Antd)
 app.use(store)
 app.use(router)
+app.use(VueLazyload,{
+    preLoad:1,
+    error:new URL(`assets/images/0.jpg`, import.meta.url).href,
+    loading:new URL(`assets/gif/loading.gif`, import.meta.url).href,
+    attempt:1
+})
 app.use(ElementPlus)
 app.mount('#app')

@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { ref,reactive} from 'vue'
-import { useTestStore } from '../store';
+import { useTestStore } from '../../store';
 const Test=useTestStore()
 const change=()=>{
     Test.setUser()
