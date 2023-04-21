@@ -24,12 +24,13 @@ async function clickCard(list: number, title: string) {
         },
         component: () => import(`./card/${list}.vue` /* @vite-ignore */)
     })
+    // 路由导航
     const navigationResult =await router.push({
         path: `/card/${list}`
     })
-    
+    // 路由信息
     if(isNavigationFailure(navigationResult,NavigationFailureType.aborted)){
-        console.log(233)
+        message.error("页面不存在")
     }
 
 
