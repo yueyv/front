@@ -28,7 +28,7 @@ async function clickCard(list: number, title: string) {
     const navigationResult =await router.push({
         path: `/card/${list}`
     })
-    // 路由信息
+    // 路由返回
     if(isNavigationFailure(navigationResult,NavigationFailureType.aborted)){
         message.error("页面不存在")
     }

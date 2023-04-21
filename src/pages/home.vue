@@ -5,28 +5,48 @@ import headerbox from '../components/header/header.vue'
 import innerTime from '../components/header/innerTime.vue';
 import footer_vue from '../components/footer/footer.vue';
 import { message } from 'ant-design-vue';
-
+import axios from 'axios';
+import { da } from 'element-plus/es/locale';
 // const emit=defineEmits<>('nav')
-const index = 30
+const index = 10
 const lists = ref()
 const inner = ref("01:00")
 const time = ref<boolean>(true)
-const title=["不存在","圆心动画",]
-const content=["不存在","贝塞尔曲线绘制"]
+interface data_first_card{
+    id:number
+    content:string
+    title:string
+}
+let data=ref<data_first_card[]>()
+
 function changeList() {
     lists.value = new Array()
-    for (let i = 0; i <= index; i++) {
+    for (let i = 1; i <= index; i++) {
         lists.value.push(i)
     }
 }
 onBeforeMount(() => {
     changeList()
     leave()
+    get_data()
 })
 function leave() {
     setTimeout(() => {
         time.value = false
     }, 5 * 60000)
+}
+// 从后端获取firstcard数据
+async function get_data() {
+    await axios.post('/api/get_first_card')
+        .then((response)=>{
+            if (response.status === 200) {
+            sessionStorage.setItem("first_card", JSON.stringify(response.data.data))
+    }
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        data.value=JSON.parse(sessionStorage.getItem("first_card")??"[{}]")
 }
 
 </script>
@@ -42,7 +62,7 @@ function leave() {
         </header>
 
         <div class="card">
-            <card v-for="list in lists" :img="list" :title="title[list]"  :content="content[list]" :key="list" :id="list" ></card>
+            <card v-for="list in lists" :img="list" :title="data?.[list]?.title" :content="data?.[list]?.content" :key="list" :id="list" ></card>
         </div>
         <footer>
             <footer_vue></footer_vue>
