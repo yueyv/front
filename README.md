@@ -14,6 +14,8 @@
 
 vue-lazyload
 
+防抖节流
+
 ## Dependencies
 
 ## technique
