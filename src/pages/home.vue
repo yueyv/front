@@ -7,17 +7,19 @@ import footer_vue from '../components/footer/footer.vue';
 import { message } from 'ant-design-vue';
 import axios from 'axios';
 import { da } from 'element-plus/es/locale';
+import { debounce } from '../utils/debounce'
+import { throttle } from '../utils/throttle'
 // const emit=defineEmits<>('nav')
 const index = 10
 const lists = ref()
 const inner = ref("01:00")
 const time = ref<boolean>(true)
-interface data_first_card{
-    id:number
-    content:string
-    title:string
+interface data_first_card {
+    id: number
+    content: string
+    title: string
 }
-let data=ref<data_first_card[]>()
+let data = ref<data_first_card[]>()
 
 function changeList() {
     lists.value = new Array()
@@ -27,26 +29,29 @@ function changeList() {
 }
 onBeforeMount(() => {
     changeList()
-    leave()
     get_data()
 })
-function leave() {
-    setTimeout(() => {
-        time.value = false
-    }, 5 * 60000)
-}
+
+
+const debouncedLeave = debounce(() => {
+    time.value = false
+}, 60000);
+const throttleEnter=throttle(()=>{
+    time.value=true
+},20000)
+
 // 从后端获取firstcard数据
 async function get_data() {
     await axios.post('/api/get_first_card')
-        .then((response)=>{
+        .then((response) => {
             if (response.status === 200) {
-            sessionStorage.setItem("first_card", JSON.stringify(response.data.data))
-    }
+                sessionStorage.setItem("first_card", JSON.stringify(response.data.data))
+            }
         })
         .catch(err => {
             console.log(err)
         })
-        data.value=JSON.parse(sessionStorage.getItem("first_card")??"[{}]")
+    data.value = JSON.parse(sessionStorage.getItem("first_card") ?? "[{}]")
 }
 
 </script>
@@ -57,12 +62,14 @@ async function get_data() {
         <header>
             <innerTime :innertime="inner" @click="time = false" class='animate__animated'
                 :class="{ 'animate__backInLeft': time, 'animate__backOutLeft': !time }"></innerTime>
-            <headerbox @mouseenter="time = true" @mouseleave="leave()" class="animate__animated animate__rubberBand">
+            <headerbox @mouseenter="throttleEnter()" @mouseleave="debouncedLeave()"
+                class="animate__animated animate__rubberBand">
             </headerbox>
         </header>
 
         <div class="card">
-            <card v-for="list in lists" :img="list" :title="data?.[list]?.title" :content="data?.[list]?.content" :key="list" :id="list" ></card>
+            <card v-for="list in lists" :img="list" :title="data?.[list]?.title" :content="data?.[list]?.content"
+                :key="list" :id="list"></card>
         </div>
         <footer>
             <footer_vue></footer_vue>
@@ -91,7 +98,7 @@ a:hover {
 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) minmax(300px, 1fr);
-    
+
 
     width: 80vw;
     margin-top: 20vh;
