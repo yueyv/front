@@ -11,7 +11,7 @@ const props = withDefaults<Props, any>(defineProps<Props>(), {
 })
 const shownav = ref<boolean>(true)
 const enter=throttle(()=>{shownav.value=true},1000)
-const leave=debounce(()=>{shownav.value=false},5000)
+const leave=debounce(()=>{shownav.value=false},10000)
 leave()
 </script>
 
