@@ -56,7 +56,8 @@ router.beforeEach((to, from) => {
         return true
     } else {
         console.log(233);
-
+        // 返回
+        router.back()
         return false
     }
 })
