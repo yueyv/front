@@ -4,6 +4,7 @@ import card from "../components/firstCard/firstCard.vue"
 import headerbox from '../components/header/header.vue'
 import innerTime from '../components/header/innerTime.vue';
 import footer_vue from '../components/footer/footer.vue';
+import navbox from '../components/nav/index.vue'
 import { message } from 'ant-design-vue';
 import axios from 'axios';
 import { da } from 'element-plus/es/locale';
@@ -38,8 +39,8 @@ const debouncedLeave = debounce(() => {
 }, 60000);
 const throttleEnter=throttle(()=>{
     time.value=true
-},20000)
-
+},5000)
+debouncedLeave()
 // 从后端获取firstcard数据
 async function get_data() {
     await axios.post('/api/get_first_card')
@@ -53,12 +54,13 @@ async function get_data() {
         })
     data.value = JSON.parse(sessionStorage.getItem("first_card") ?? "[{}]")
 }
+const nav_list=ref(["样式","笔记","工具","其他"])
 
 </script>
 
 <template>
     <div class="main">
-        <!-- <a href="#5">a</a> -->
+       
         <header>
             <innerTime :innertime="inner" @click="time = false" class='animate__animated'
                 :class="{ 'animate__backInLeft': time, 'animate__backOutLeft': !time }"></innerTime>
@@ -66,7 +68,7 @@ async function get_data() {
                 class="animate__animated animate__rubberBand">
             </headerbox>
         </header>
-
+        <navbox :nav_list="nav_list" ></navbox>
         <div class="card">
             <card v-for="list in lists" :img="list" :title="data?.[list]?.title" :content="data?.[list]?.content"
                 :key="list" :id="list"></card>

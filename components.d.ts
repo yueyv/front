@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     Loading: typeof import('./src/components/login/loading.vue')['default']
     Login: typeof import('./src/components/login/login.vue')['default']
     MoveBox: typeof import('./src/components/others/moveBox.vue')['default']
+    Nav: typeof import('./src/components/nav/index.vue')['default']
     Parent: typeof import('./src/components/others/parent.vue')['default']
     PiniaTest: typeof import('./src/components/others/PiniaTest.vue')['default']
     Register: typeof import('./src/components/login/register.vue')['default']

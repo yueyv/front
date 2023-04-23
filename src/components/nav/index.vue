@@ -1,0 +1,76 @@
+<script setup lang='ts'>
+import { ref, reactive } from 'vue'
+import { useRouter } from "vue-router";
+import { debounce } from '../../utils/debounce';
+import { throttle } from '../../utils/throttle';
+interface Props {
+    nav_list?: Array<string>
+}
+const props = withDefaults<Props, any>(defineProps<Props>(), {
+    nav_list: ["样式", "笔记", "工具"]
+})
+const shownav = ref<boolean>(true)
+const enter=throttle(()=>{shownav.value=true},1000)
+const leave=debounce(()=>{shownav.value=false},5000)
+leave()
+</script>
+
+<template>
+    <div class="listen" @mouseenter="enter()" @mouseleave="leave()">
+        <div class="box animate__animated" :class="{ 'animate__backInLeft': shownav, 'animate__backOutLeft': !shownav }">
+            <div class="choose" v-for="key in nav_list" :key="key">{{ key }}</div>
+        </div>
+    </div>
+</template>
+
+<style scoped lang='less'>
+.listen{
+    z-index: 1;
+    // background-color: #ff719a;
+    height: 80vh;
+    position: fixed;
+    width: 20vh;
+    left: 0vw;
+    top :10vh;
+}
+.box {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    transition: all 1s;
+    z-index: 2;
+    width: 60px;
+    top: 30vh;
+    left: 2vw;
+    min-height: 200px;
+    position: fixed;
+    // height: 200px;
+    background-color: #ff719a;
+    border-radius: 20px;
+    display: grid;
+    box-shadow: 5ch;
+    // visibility: hidden;
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to top left, #ffe29f, #ffa99f, #ff719a);
+    color: #ccfffafd;
+
+    &:hover {
+        visibility: visible;
+        background: linear-gradient(to bottom right, #ffe29f, #ffa99f, #ff719a);
+    }
+}
+
+.choose {
+    width: 45px;
+    // height: 30px;
+    // padding-right: 5px;
+    // padding-left: 5px;
+    font-size: 18px;
+    text-align: center;
+
+    &:hover {
+        color: #dd94fa;
+    }
+}</style>
