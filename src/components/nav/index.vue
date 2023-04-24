@@ -4,35 +4,40 @@ import { useRouter } from "vue-router";
 import { debounce } from '../../utils/debounce';
 import { throttle } from '../../utils/throttle';
 interface Props {
-    nav_list?: Array<string>
+    nav_list?: Array<string>,
+    nav_show?: Array<boolean>
 }
 const props = withDefaults<Props, any>(defineProps<Props>(), {
-    nav_list: ["样式", "笔记", "工具"]
+    nav_list: ["样式", "笔记", "工具"],
+    nav_show: [true, false, false]
 })
 const shownav = ref<boolean>(true)
-const enter=throttle(()=>{shownav.value=true},1000)
-const leave=debounce(()=>{shownav.value=false},10000)
-leave()
+const enter = throttle(() => { shownav.value = true }, 1000)
+// const leave=debounce(()=>{shownav.value=false},10000)
+// leave()@mouseleave="leave()"
 </script>
 
 <template>
-    <div class="listen" @mouseenter="enter()" @mouseleave="leave()">
+    <div class="listen" @mouseenter="enter()">
         <div class="box animate__animated" :class="{ 'animate__backInLeft': shownav, 'animate__backOutLeft': !shownav }">
-            <div class="choose" v-for="key in nav_list" :key="key">{{ key }}</div>
+            <div class="choose" v-for="key in nav_list.length" :key="nav_list[key-1]" :class="{'choosed':nav_show[key-1]}">
+                <span>{{ nav_list[key-1] }}</span>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped lang='less'>
-.listen{
+.listen {
     z-index: 1;
     // background-color: #ff719a;
     height: 80vh;
     position: fixed;
     width: 20vh;
     left: 0vw;
-    top :10vh;
+    top: 10vh;
 }
+
 .box {
     padding-top: 5px;
     padding-bottom: 10px;
@@ -49,7 +54,7 @@ leave()
     display: grid;
     box-shadow: 5ch;
     // visibility: hidden;
-    z-index: 3;
+    z-index: 1;
     justify-content: center;
     align-items: center;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
@@ -69,8 +74,28 @@ leave()
     // padding-left: 5px;
     font-size: 18px;
     text-align: center;
+    overflow: hidden;
+    // background-color: #ffe29f;
 
     &:hover {
-        color: #dd94fa;
+        color: #eec3ff;
+    }
+
+}
+.choosed{
+    color: #ff719a;
+    background: linear-gradient(200deg, #fab0aa, #7ccfff);
+    box-shadow: #ffa99f;
+    border-radius: 5px;
+}
+
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }</style>

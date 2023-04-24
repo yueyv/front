@@ -55,7 +55,7 @@ async function get_data() {
     data.value = JSON.parse(sessionStorage.getItem("first_card") ?? "[{}]")
 }
 const nav_list=ref(["样式","笔记","工具","其他"])
-
+const nav_show=ref([true,false,false,false])
 </script>
 
 <template>
@@ -68,7 +68,7 @@ const nav_list=ref(["样式","笔记","工具","其他"])
                 class="animate__animated animate__rubberBand">
             </headerbox>
         </header>
-        <navbox :nav_list="nav_list" ></navbox>
+        <navbox :nav_list="nav_list" :nav_show="nav_show"></navbox>
         <div class="card">
             <card v-for="list in lists" :img="list" :title="data?.[list]?.title" :content="data?.[list]?.content"
                 :key="list" :id="list"></card>
