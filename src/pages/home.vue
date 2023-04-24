@@ -10,6 +10,7 @@ import axios from 'axios';
 import { da } from 'element-plus/es/locale';
 import { debounce } from '../utils/debounce'
 import { throttle } from '../utils/throttle'
+import secondCard from '../components/secondCard/index.vue'
 // const emit=defineEmits<>('nav')
 const index = 10
 const lists = ref()
@@ -76,10 +77,16 @@ function nav_choose(value:number){
             </headerbox>
         </header>
         <navbox :nav_list="nav_list" style="z-index: 3;" :nav_show="nav_show" @nav_choose="nav_choose"></navbox>
+        <!-- 样式 -->
         <div class="card" v-if="nav_show[0]">
             <card v-for="list in lists" :img="list" :title="data?.[list]?.title" :content="data?.[list]?.content"
                 :key="list" :id="list"></card>
         </div>
+        <!-- 笔记 -->
+        <!-- 工具 -->
+        <div class="card" v-if="nav_show[2]">
+        <secondCard ></secondCard></div>
+        <!-- 其他 -->
         <footer>
             <footer_vue></footer_vue>
         </footer>
