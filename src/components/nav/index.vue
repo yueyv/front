@@ -3,6 +3,7 @@ import { ref, reactive } from 'vue'
 import { useRouter } from "vue-router";
 import { debounce } from '../../utils/debounce';
 import { throttle } from '../../utils/throttle';
+import { message } from 'ant-design-vue';
 interface Props {
     nav_list?: Array<string>,
     nav_show?: Array<boolean>
@@ -13,7 +14,7 @@ const props = withDefaults<Props, any>(defineProps<Props>(), {
 })
 const shownav = ref<boolean>(true)
 const enter = throttle(() => { shownav.value = true }, 1000)
- const leave=debounce(()=>{shownav.value=false},10000)
+ const leave=debounce(()=>{shownav.value=false},60000)
 leave()
 const emit=defineEmits(['nav_choose'])
 function nav_choosed(key:number){
@@ -26,6 +27,10 @@ function nav_choosed(key:number){
         <div class="box animate__animated" :class="{ 'animate__backInLeft': shownav, 'animate__backOutLeft': !shownav }">
             <div class="choose" v-for="key in nav_list.length" :key="nav_list[key-1]" @click="nav_choosed(key-1)" :class="{'choosed':nav_show[key-1]}">
                 <span>{{ nav_list[key-1] }}</span>
+            </div>
+            <br>
+            <div class="choose" @click="shownav=false">
+                <span>隐藏</span>
             </div>
         </div>
     </div>
@@ -50,7 +55,7 @@ function nav_choosed(key:number){
     width: 60px;
     top: 30vh;
     left: 2vw;
-    min-height: 200px;
+    min-height: 300px;
     position: fixed;
     // height: 200px;
     background-color: #ff719a;

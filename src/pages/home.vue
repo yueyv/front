@@ -75,7 +75,7 @@ function nav_choose(value:number){
                 class="animate__animated animate__rubberBand">
             </headerbox>
         </header>
-        <navbox :nav_list="nav_list" :nav_show="nav_show" @nav_choose="nav_choose"></navbox>
+        <navbox :nav_list="nav_list" style="z-index: 3;" :nav_show="nav_show" @nav_choose="nav_choose"></navbox>
         <div class="card" v-if="nav_show[0]">
             <card v-for="list in lists" :img="list" :title="data?.[list]?.title" :content="data?.[list]?.content"
                 :key="list" :id="list"></card>
