@@ -56,6 +56,13 @@ async function get_data() {
 }
 const nav_list=ref(["样式","笔记","工具","其他"])
 const nav_show=ref([true,false,false,false])
+function nav_choose(value:number){
+    // message.info(value)
+    for(let i=0;i<nav_show.value.length;i++){
+        nav_show.value[i]=false
+    }
+    nav_show.value[value]=true
+}
 </script>
 
 <template>
@@ -68,8 +75,8 @@ const nav_show=ref([true,false,false,false])
                 class="animate__animated animate__rubberBand">
             </headerbox>
         </header>
-        <navbox :nav_list="nav_list" :nav_show="nav_show"></navbox>
-        <div class="card">
+        <navbox :nav_list="nav_list" :nav_show="nav_show" @nav_choose="nav_choose"></navbox>
+        <div class="card" v-if="nav_show[0]">
             <card v-for="list in lists" :img="list" :title="data?.[list]?.title" :content="data?.[list]?.content"
                 :key="list" :id="list"></card>
         </div>
@@ -88,6 +95,7 @@ const nav_show=ref([true,false,false,false])
     align-items: center;
     justify-content: center;
     flex-flow: column;
+    min-height: 100vh;
     flex: 1;
 }
 

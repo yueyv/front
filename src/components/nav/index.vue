@@ -13,14 +13,18 @@ const props = withDefaults<Props, any>(defineProps<Props>(), {
 })
 const shownav = ref<boolean>(true)
 const enter = throttle(() => { shownav.value = true }, 1000)
-// const leave=debounce(()=>{shownav.value=false},10000)
-// leave()@mouseleave="leave()"
+ const leave=debounce(()=>{shownav.value=false},10000)
+leave()
+const emit=defineEmits(['nav_choose'])
+function nav_choosed(key:number){
+    emit('nav_choose',key)
+}
 </script>
 
 <template>
-    <div class="listen" @mouseenter="enter()">
+    <div class="listen" @mouseenter="enter()" @mouseleave="leave()">
         <div class="box animate__animated" :class="{ 'animate__backInLeft': shownav, 'animate__backOutLeft': !shownav }">
-            <div class="choose" v-for="key in nav_list.length" :key="nav_list[key-1]" :class="{'choosed':nav_show[key-1]}">
+            <div class="choose" v-for="key in nav_list.length" :key="nav_list[key-1]" @click="nav_choosed(key-1)" :class="{'choosed':nav_show[key-1]}">
                 <span>{{ nav_list[key-1] }}</span>
             </div>
         </div>
