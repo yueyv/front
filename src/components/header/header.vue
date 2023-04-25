@@ -63,6 +63,7 @@ function login() {
     }
 
     &:hover {
+        box-shadow: 5px 5px 2px 1px rgba(255, 255, 255,0.3);
         visibility: visible;
         background: linear-gradient(to bottom right, #ffe29f, #ffa99f, #ff719a);
         transform: all 0.6s linear;

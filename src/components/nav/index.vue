@@ -42,7 +42,7 @@ function nav_choosed(key:number){
     // background-color: #ff719a;
     height: 80vh;
     position: fixed;
-    width: 20vh;
+    width: 8vh;
     left: 0vw;
     top: 10vh;
 }
@@ -71,6 +71,7 @@ function nav_choosed(key:number){
     color: #ccfffafd;
 
     &:hover {
+        box-shadow: 5px 5px 2px 1px rgba(255, 255, 255,0.3);
         visibility: visible;
         background: linear-gradient(to bottom right, #ffe29f, #ffa99f, #ff719a);
     }

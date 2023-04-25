@@ -84,7 +84,7 @@ function nav_choose(value:number){
         </div>
         <!-- 笔记 -->
         <!-- 工具 -->
-        <div class="card" v-if="nav_show[2]">
+        <div class="card_utils" v-if="nav_show[2]">
         <secondCard ></secondCard></div>
         <!-- 其他 -->
         <footer>
@@ -96,14 +96,15 @@ function nav_choose(value:number){
 
 <style scoped lang='less'>
 .main {
-    background: linear-gradient(200deg, #80d0c7, #13547a);
-    overflow: scroll;
+    background-image: linear-gradient(200deg, #80d0c7, #13547a);
+    // overflow: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column;
     min-height: 100vh;
     flex: 1;
+    transition: all 1s ;
 }
 
 a:hover {
@@ -112,13 +113,19 @@ a:hover {
 
 
 .card {
-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) minmax(300px, 1fr);
-
-
     width: 80vw;
     margin-top: 20vh;
     margin-bottom: 20vh;
-
-}</style>
+}
+.card_utils {
+    display: grid;
+    grid-template-columns: repeat(auto-fit);
+    width: 80vw;
+    // margin-right: 10vw;
+    justify-content: center;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+}
+</style>

@@ -50,6 +50,7 @@ const props = withDefaults(defineProps<Props>(), {
     }
     &:hover{
         visibility: visible;
+        box-shadow: 5px 5px 2px 1px rgba(255, 255, 255,0.3);
         background: linear-gradient(to bottom right, #ffe29f, #ffa99f, #ff719a);
     }
 }
