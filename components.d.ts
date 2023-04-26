@@ -10,28 +10,17 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     1: typeof import('./src/components/firstCard/card/1.vue')['default']
-    Antdtest: typeof import('./src/components/others/Antdtest.vue')['default']
-    Authentication: typeof import('./src/components/others/Authentication.vue')['default']
-    Child: typeof import('./src/components/others/child.vue')['default']
-    ElementTest: typeof import('./src/components/others/elementTest.vue')['default']
-    EventLoop: typeof import('./src/components/others/eventLoop.vue')['default']
     FirstCard: typeof import('./src/components/firstCard/firstCard.vue')['default']
     Footer: typeof import('./src/components/footer/footer.vue')['default']
     Header: typeof import('./src/components/header/header.vue')['default']
-    Icon: typeof import('./src/components/others/icon.vue')['default']
     InnerTime: typeof import('./src/components/header/innerTime.vue')['default']
     Loading: typeof import('./src/components/login/loading.vue')['default']
     Login: typeof import('./src/components/login/login.vue')['default']
-    MoveBox: typeof import('./src/components/others/moveBox.vue')['default']
     Nav: typeof import('./src/components/nav/index.vue')['default']
-    Parent: typeof import('./src/components/others/parent.vue')['default']
-    PiniaTest: typeof import('./src/components/others/PiniaTest.vue')['default']
     Register: typeof import('./src/components/login/register.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
-    RouterTest: typeof import('./src/components/others/routerTest.vue')['default']
     RouterView: typeof import('vue-router')['RouterView']
     Second_a: typeof import('./src/components/secondCard/second_a.vue')['default']
     SecondCard: typeof import('./src/components/secondCard/index.vue')['default']
-    ToBase64: typeof import('./src/components/others/toBase64.vue')['default']
   }
 }

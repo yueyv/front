@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import parent from './components/others/parent.vue';
+
 </script>
 
 <template>
