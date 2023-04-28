@@ -56,7 +56,7 @@ async function get_data() {
     data.value = JSON.parse(sessionStorage.getItem("first_card") ?? "[{}]")
 }
 const nav_list=ref(["样式","笔记","工具","其他"])
-const nav_show=ref([true,false,false,false])
+const nav_show=ref([false,false,true,false])
 function nav_choose(value:number){
     // message.info(value)
     for(let i=0;i<nav_show.value.length;i++){

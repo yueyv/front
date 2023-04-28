@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Second_a: typeof import('./src/components/secondCard/second_a.vue')['default']
+    Second_search: typeof import('./src/components/secondCard/second_search.vue')['default']
     SecondCard: typeof import('./src/components/secondCard/index.vue')['default']
   }
 }
