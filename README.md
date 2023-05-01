@@ -41,3 +41,7 @@ promise
 settimeout
 
 cleartimeout
+
+### docker
+
+nginx 正向代理
