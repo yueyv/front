@@ -45,3 +45,7 @@ cleartimeout
 ### docker
 
 nginx 正向代理
+
+### mock
+
+拦截axios模拟信号发送

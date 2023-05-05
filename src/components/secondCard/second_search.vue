@@ -30,8 +30,9 @@ const search_start = (e: KeyboardEvent) => {
 }
 .search_input{
     height: 50px;
-    min-width: 600px;
-    // min-width: 80vw;
+    width: 60vw;
+    
+    max-width: 600px;
     border-radius: 20px;
     border: none;
     text-align: center;

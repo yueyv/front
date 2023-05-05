@@ -122,7 +122,7 @@ a:hover {
 .card_utils {
     display: grid;
     grid-template-columns: repeat(auto-fit);
-    width: 80vw;
+    width: 70vw;
     // margin-right: 10vw;
     justify-content: center;
     margin-top: 20vh;
