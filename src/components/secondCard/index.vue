@@ -6,7 +6,7 @@ import second_search from './second_search.vue';
 const link_list = [[
     {
     "link": 'https://chat.openai.com/',
-    "link_image": '../../../public/icon/chatGPT.jpg',
+    "link_image": '/icon/chatGPT.jpg',
     "link_title": 'chatGPT'
 },{
     "link":'https://www.uviewui.com/',
@@ -22,7 +22,7 @@ const link_list = [[
     "link_title":"Echarts"
 },{
     "link":'https://uniapp.dcloud.io/',
-    "link_image":"../../../public/icon/uni-app.png",
+    "link_image":"/icon/uni-app.png",
     "link_title":"uni-app"
 },{
     "link":"http://zhongguose.com/#putaojiangzi",

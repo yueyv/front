@@ -8,7 +8,7 @@ interface Props {
 const props = defineProps<Props>()
 // 转成url
 function getImageUrl(param: string) {
-    return new URL(param, import.meta.url).href;
+    return param
 }
 </script>
 
