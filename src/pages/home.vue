@@ -11,6 +11,7 @@ import { da } from 'element-plus/es/locale';
 import { debounce } from '../utils/debounce'
 import { throttle } from '../utils/throttle'
 import secondCard from '../components/secondCard/index.vue'
+import note from '../components/note/index.vue';
 // const emit=defineEmits<>('nav')
 const index = 10
 const lists = ref()
@@ -83,9 +84,11 @@ function nav_choose(value:number){
                 :key="list" :id="list"></card>
         </div>
         <!-- 笔记 -->
+        <div class="card_note" v-if="nav_show[1]">
+        <note></note></div>
         <!-- 工具 -->
         <div class="card_utils" v-if="nav_show[2]">
-        <secondCard ></secondCard></div>
+        <secondCard></secondCard></div>
         <!-- 其他 -->
         <footer>
             <footer_vue></footer_vue>
@@ -119,7 +122,7 @@ a:hover {
     margin-top: 20vh;
     margin-bottom: 20vh;
 }
-.card_utils {
+.card_utils,.card_note {
     display: grid;
     grid-template-columns: repeat(auto-fit);
     width: 70vw;
