@@ -47,9 +47,10 @@ import { ref, reactive } from 'vue'
     text-overflow: ellipsis;
     // white-space: break-spaces; /* 禁止换行 */
     height: 100%-24px;
+    font-size: 16px;
     display: -webkit-box; /* 设置为弹性盒子布局 */
     -webkit-box-orient: vertical; /* 设置为垂直方向 */
-    -webkit-line-clamp: 7; /* 显示的行数 */
-    max-height: calc(1.5em * 8); /* 行高乘以行数 */
+    -webkit-line-clamp: 6; /* 显示的行数 */
+    max-height: calc(20px * 8); /* 行高乘以行数 */
 }
 </style>
