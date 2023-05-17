@@ -2,6 +2,8 @@
 
     unplugin-auto-import
 
+update
+
     unplugin-vue-components
 
     eslint
@@ -14,7 +16,7 @@
 
 图片懒加载
 
-vue-lazyload 
+vue-lazyload
 
 防抖节流
 
