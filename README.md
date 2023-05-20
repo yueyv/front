@@ -2,7 +2,7 @@
 
     unplugin-auto-import
 
-update
+www
 
     unplugin-vue-components
 
