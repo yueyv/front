@@ -71,8 +71,8 @@ function nav_choose(value:number){
     <div class="main">
        
         <header>
-            <!-- <innerTime :innertime="inner" @click="time = false" class='animate__animated'
-                :class="{ 'animate__backInLeft': time, 'animate__backOutLeft': !time }"></innerTime> -->
+            <innerTime :innertime="inner" @click="time = false" class='animate__animated'
+                :class="{ 'animate__backInLeft': time, 'animate__backOutLeft': !time }"></innerTime>
             <headerbox @mouseenter="throttleEnter()" @mouseleave="debouncedLeave()"
                 class="animate__animated animate__rubberBand">
             </headerbox>
