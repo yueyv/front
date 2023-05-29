@@ -1,3 +1,5 @@
 export const enum Names{
-    TEST='TEST'
+    TEST='TEST',
+    USERIFD='userid',
+    TOKEN='token'
 }
