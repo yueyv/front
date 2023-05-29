@@ -7,15 +7,18 @@ import footer_vue from '../components/footer/footer.vue';
 import navbox from '../components/nav/index.vue'
 import { message } from 'ant-design-vue';
 import axios from 'axios';
+import {useINTERTIMEStore} from '../store/index';
+import {storeToRefs} from 'pinia'
 import { da } from 'element-plus/es/locale';
 import { debounce } from '../utils/debounce'
 import { throttle } from '../utils/throttle'
 import secondCard from '../components/secondCard/index.vue'
 import note from '../components/note/index.vue';
+const mainStore=useINTERTIMEStore()
 // const emit=defineEmits<>('nav')
 const index = 10
 const lists = ref()
-const inner = ref("01:00")
+const  {inter_time}  = storeToRefs(mainStore)
 const time = ref<boolean>(true)
 interface data_first_card {
     id: number
@@ -23,7 +26,7 @@ interface data_first_card {
     title: string
 }
 let data = ref<data_first_card[]>()
-
+let stop_inte=mainStore.computedinter_time()
 function changeList() {
     lists.value = new Array()
     for (let i = 1; i <= index; i++) {
@@ -32,9 +35,10 @@ function changeList() {
 }
 onBeforeMount(() => {
     changeList()
-    get_data()
 })
-
+onBeforeUnmount(()=>{
+    stop_inte()
+})
 
 const debouncedLeave = debounce(() => {
     time.value = false
@@ -71,7 +75,7 @@ function nav_choose(value:number){
     <div class="main">
        
         <header>
-            <innerTime :innertime="inner" @click="time = false" class='animate__animated'
+            <innerTime :innertime="inter_time" @click="time = false" class='animate__animated'
                 :class="{ 'animate__backInLeft': time, 'animate__backOutLeft': !time }"></innerTime>
             <headerbox @mouseenter="throttleEnter()" @mouseleave="debouncedLeave()"
                 class="animate__animated animate__rubberBand">

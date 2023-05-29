@@ -3,10 +3,10 @@ import { ref, reactive } from 'vue'
 import { useRouter } from "vue-router";
 const router=useRouter()
 interface Props {
-    innertime:string,
+    innertime?:string,
 }
 const props = withDefaults(defineProps<Props>(), {
-    innertime:"00:00"
+    innertime:"Error"
 })
 
 </script>
