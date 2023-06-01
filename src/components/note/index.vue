@@ -28,33 +28,31 @@ async function get_data() {
         .catch(err => {
             console.log(err)
         })
-     
+    data.value = JSON.parse(sessionStorage.getItem("note") ?? "[{}]")
 }
-onBeforeMount(()=>{
+onBeforeMount(() => {
     changeList()
     get_data()
+
 })
-data.value =JSON.parse(sessionStorage.getItem("note") ?? "[{}]")
+
 </script>
 
 <template>
     <search></search>
-<div class="note_container">
-    <note v-for="list in lists" :title="data?.[list]?.title" :content="data?.[list]?.content"
-              :id="list"></note>
-</div>
-
-    
+    <div class="note_container">
+        <note v-for="list in lists" :title="data?.[list]?.title" :content="data?.[list]?.content" :id="list"></note>
+    </div>
 </template>
 
 <style scoped lang='less'>
-.note_container{
+.note_container {
     display: grid;
     align-items: center;
     justify-content: center;
     min-width: 60vw;
-    grid-template-columns: repeat(auto-fill, minmax(215px,1fr)) minmax(215px,1fr);
-    grid-row-gap:15px;
+    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)) minmax(215px, 1fr);
+    grid-row-gap: 15px;
     justify-items: center;
 
 }
