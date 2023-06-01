@@ -5,6 +5,7 @@ import note from './main.vue';
 import axios from 'axios';
 const index = 12
 const lists = ref()
+
 function changeList() {
     lists.value = new Array()
     for (let i = 1; i <= index; i++) {

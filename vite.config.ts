@@ -8,6 +8,7 @@ import { fileURLToPath, URL } from 'url';
 import { resolve } from 'path'
 import { presetIcons, presetAttributify, presetUno } from 'unocss';
 import { fillFieldNames } from 'ant-design-vue/lib/vc-cascader/utils/commonUtil'
+import { marked } from 'marked'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -35,19 +36,24 @@ export default defineConfig({
     port: 3333,
     open: true,
     cors: true,
+    hmr: {
+      overlay: false
+    },
     proxy: {
       '/api': {
           target: 'http://localhost:3000',
         // target: 'http://114.132.50.228:3000',
         changeOrigin: true,
         // rewrite: (path) => path.replace('/api', '')
-      }
+      },
+      
     }
   },
   resolve:{
     alias:{
       '@':fileURLToPath(new URL('./src',import.meta.url)),
-      '@images':resolve('./src/assets/img')
+      '@images':resolve('./src/assets/img'),
+      // 'marked':'marked'
     }
   }
 })

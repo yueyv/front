@@ -9,11 +9,11 @@ import { message } from 'ant-design-vue';
 import axios from 'axios';
 import {useINTERTIMEStore} from '../store/index';
 import {storeToRefs} from 'pinia'
-import { da } from 'element-plus/es/locale';
 import { debounce } from '../utils/debounce'
 import { throttle } from '../utils/throttle'
 import secondCard from '../components/secondCard/index.vue'
 import note from '../components/note/index.vue';
+import {handleScroll} from '../hooks/useScroll';
 const mainStore=useINTERTIMEStore()
 // const emit=defineEmits<>('nav')
 const index = 10
@@ -70,6 +70,9 @@ function nav_choose(value:number){
     }
     nav_show.value[value]=true
 }
+function addList(){
+    console.log(233);
+}
 </script>
 
 <template>
@@ -84,7 +87,7 @@ function nav_choose(value:number){
         </header>
         <navbox :nav_list="nav_list" style="z-index: 3;" :nav_show="nav_show" @nav_choose="nav_choose"></navbox>
         <!-- 样式 -->
-        <div class="card" v-if="nav_show[0]">
+        <div class="card" v-if="nav_show[0]" @scroll="throttle(()=>handleScroll(addList),1000)">
             <card v-for="list in lists" :img="list" :title="data?.[list]?.title" :content="data?.[list]?.content"
                 :key="list" :id="list"></card>
         </div>
