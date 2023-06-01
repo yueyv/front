@@ -35,7 +35,6 @@ onBeforeMount(()=>{
     get_data()
 })
 data.value =JSON.parse(sessionStorage.getItem("note") ?? "[{}]")
-console.log(data);
 </script>
 
 <template>

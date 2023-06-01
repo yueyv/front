@@ -87,7 +87,7 @@ function addList(){
         </header>
         <navbox :nav_list="nav_list" style="z-index: 3;" :nav_show="nav_show" @nav_choose="nav_choose"></navbox>
         <!-- 样式 -->
-        <div class="card" v-if="nav_show[0]" @scroll="throttle(()=>handleScroll(addList),1000)">
+        <div class="card_container" v-if="nav_show[0]" @scroll="throttle(()=>handleScroll(()=>addList()),1000)">
             <card v-for="list in lists" :img="list" :title="data?.[list]?.title" :content="data?.[list]?.content"
                 :key="list" :id="list"></card>
         </div>
@@ -123,7 +123,7 @@ a:hover {
 }
 
 
-.card {
+.card_container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) minmax(300px, 1fr);
     width: 80vw;
