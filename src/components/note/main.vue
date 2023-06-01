@@ -1,13 +1,34 @@
 <script setup lang='ts'>
-import { ref, reactive } from 'vue'
+// // import marked from 'marked'
+// 	var rendererMD = new marked . Renderer ()
+// 	marked . setOptions ({
+// 		renderer: rendererMD ,
+// 		gfm: true ,
+// 		tables: true ,
+// 		breaks: false ,
+// 		pedantic: false ,
+// 		sanitize: false ,
+// 		smartLists: true ,
+// 		smartypants: false
+// 	})
 
+interface Props {
+    id: number,
+    title?: string,
+    content?: string
+}
+const props = withDefaults(defineProps<Props>(), {
+    id: 0,
+    title: '不存在',
+    content: '不存在'
+})
 </script>
 
 <template>
     <div class="note_box">
-        <div class="title">测试</div>
+        <div class="title">{{title}}</div>
 
-        <div class="content_note">开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。开发后端中。</div>
+        <div class="content_note">{{content}}</div>
     </div>
 </template>
 
@@ -35,7 +56,7 @@ import { ref, reactive } from 'vue'
     // width: 180px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: break-spaces; /* 禁止换行 */
+    white-space: nowrap; /* 禁止换行 */
     margin-right: 15px;
     margin-left: 15px;
     font-size: 24px;
