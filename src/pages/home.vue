@@ -64,7 +64,7 @@ async function get_data() {
 }
 
 const nav_list = ref(["样式", "笔记", "工具"])
-const nav_show = ref([false, true, false, false])
+const nav_show = ref([true, false, false, false])
 function nav_choose(value: number) {
     // message.info(value)
     for (let i = 0; i < nav_show.value.length; i++) {
