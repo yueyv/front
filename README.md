@@ -1,4 +1,4 @@
-# Devdependencies
+# SPA
 
     unplugin-auto-import
 
