@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { message } from 'ant-design-vue';
-import { ref, reactive } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 // 要操作的元素

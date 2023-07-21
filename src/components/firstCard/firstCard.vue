@@ -54,7 +54,7 @@ function getImageUrl(param: number) {
     <div class="container" @click="clickCard(img, title)">
         <div class="card">
             <div class="img-box">
-                <img v-lazy="getImageUrl(img)">
+                <img :src="getImageUrl(img)">
             </div>
             <div class="text-box">
                 <h2>{{ title }}</h2>

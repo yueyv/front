@@ -13,16 +13,23 @@ function getImageUrl(param: string) {
 </script>
 
 <template>
+    <a :href="link" style="width: 11vw;">
     <div class="second_a_box">
-        <a :href="link" class="second"><img style="width: 32px; height:auto;" :src="getImageUrl(link_img)">&nbsp;{{ link_title }}&nbsp;</a>
+        <div class="second">
+            <img style="width: 32px; height:auto;" :src="getImageUrl(link_img)">&nbsp;{{ link_title }}&nbsp;</div>
     </div>
+</a>
 </template>
 
 <style scoped lang='less'>
+a{
+    text-decoration: none;
+}
 .second {
+    line-height: 40px;
     font-size: 20px;
-    color: #000000;
-
+    color: #2e1b1b;
+    text-decoration: none;
     &:hover {
         color: rgb(245, 216, 205);
     }
@@ -33,7 +40,7 @@ function getImageUrl(param: string) {
 
 img {
     position: relative;
-    top: -2px
+    top: 7px
 }
 
 .second_a_box {
@@ -44,6 +51,7 @@ img {
     // border-style: solid ;
     border-width: 2px;
     border-radius: 5px;
+    padding-left: 1vw;
     border-color: rgba(255, 255, 255, 0.4);
     // text-align: center;
     &:hover {
