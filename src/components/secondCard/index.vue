@@ -61,58 +61,6 @@ const link_list = [[
     "link": 'https://juejin.cn/',
     "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
     "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
-}], [{
-    "link": 'https://juejin.cn/',
-    "link_image": 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-32x32.png',
-    "link_title": '掘金'
 }]]
 
 
@@ -147,7 +95,7 @@ const link_list = [[
                 :link_img="link_list[2][key - 1].link_image" :link_title="link_list[2][key - 1].link_title"></second_a>
         </div>
     </section>
-    <section>
+    <!-- <section>
         <div class="second_main">
             <div class="a_title">
                 <fieldset>文档</fieldset>
@@ -263,7 +211,7 @@ const link_list = [[
             <second_a v-for="key in link_list[15].length" :link="link_list[15][key - 1].link"
                 :link_img="link_list[15][key - 1].link_image" :link_title="link_list[15][key - 1].link_title"></second_a>
         </div>
-    </section>
+    </section> -->
 </template>
 
 <style scoped lang='less'>
@@ -287,11 +235,13 @@ const link_list = [[
     justify-content: flex-start;
     align-items: flex-start;
     display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap:5px ;
     transition: all 0.5s;
 
     // grid-row-start: span 2;
     &:hover {
-        box-shadow: 10px 10px 5px 2px rgba(255, 255, 255, 0.2);
+        box-shadow: 5px 5px 5px 2px rgba(255, 255, 255, 0.2);
     }
 
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) // grid-template-rows:repeat(auto-fit)

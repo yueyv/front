@@ -1,5 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-
+import { createMemoryHistory,createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 declare module 'vue-router' {
     interface RouterMeta {
         title: string
@@ -44,7 +43,7 @@ const routes: Array<RouteRecordRaw> = [
     },
 ]
 export const router = createRouter({
-    history: createWebHistory(),
+    history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
     routes
 })
 // 路由守卫

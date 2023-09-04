@@ -8,9 +8,9 @@ interface Props {
     nav_list?: Array<string>,
     nav_show?: Array<boolean>
 }
-const props = withDefaults<Props, any>(defineProps<Props>(), {
-    nav_list: ["样式", "笔记", "工具"],
-    nav_show: [true, false, false]
+const props = withDefaults(defineProps<Props>(), {
+    nav_list: ()=>["样式", "笔记", "工具"],
+    nav_show:()=> [true, false, false]
 })
 const shownav = ref<boolean>(true)
 const enter = throttle(() => { shownav.value = true }, 1000)
@@ -80,8 +80,10 @@ function nav_choosed(key:number){
 .choose {
     width: 45px;
     // height: 30px;
-    // padding-right: 5px;
-    // padding-left: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 5px;
     font-size: 18px;
     text-align: center;
     overflow: hidden;

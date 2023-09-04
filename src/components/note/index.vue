@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { ref, reactive } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import search from './note_search.vue';
 import note from './main.vue';
 import axios from 'axios';

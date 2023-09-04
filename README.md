@@ -1,4 +1,5 @@
-# SPA
+
+# SSR
 
     unplugin-auto-import
 
@@ -55,3 +56,4 @@ nginx 正向代理
 拦截axios模拟信号发送
 
 marked
+

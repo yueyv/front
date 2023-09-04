@@ -1,45 +1,7 @@
 import { defineStore } from "pinia";
 
 import { Names } from "./store-name";
-// type User = {
-//     name: string,
-// }
 
-// const Login = (): Promise<User> => {
-//     return new Promise((resolve) => {
-//         setTimeout(() => {
-//             resolve({
-//                 name: "test",
-//             })
-//         }, 10);
-//     })
-// }
-// export const useTestStore = defineStore(Names.TEST, {
-//     state: () => {
-//         return {
-//             user: <User>{},
-//             name: 1
-//         }
-//     },
-//     //computed 计算修饰
-//     getters: {
-//         newName():string{
-//             return `$-${this.name}`
-//         },
-
-//     },
-//     //mothods 做同步和异步 
-//     actions: {
-//         async setUser() {
-//             const result= await Login()
-//             this.user=result
-//             this.setName(12)
-//         },
-//         setName(name:number){
-//             this.name=name
-//         }
-//     }
-// })
 export const useINTERTIMEStore = defineStore(Names.INTERTIME, {
     state: () => {
         return {
@@ -93,6 +55,43 @@ export const useINTERTIMEStore = defineStore(Names.INTERTIME, {
             return function stop() {
                 clearInterval(intervalId)
             }
+        }
+    }
+})
+type User={
+    id:string
+}
+function login(){
+    if ((sessionStorage.getItem("userId")?.length ?? 1) <= 2 || (sessionStorage.getItem("userId")?.length ?? 51) >= 50) {
+        if (sessionStorage.getItem('userId')) {
+            sessionStorage.removeItem("userId")
+        }
+    }
+
+    return window.atob(JSON.parse(sessionStorage.getItem("userId") ?? JSON.stringify({ "token": `${window.btoa("Not logined in")}` })).token)
+}
+export const useUserStore = defineStore(Names.USER, {
+    state: () => {
+        return {
+            user: <User>{
+                id:"未登录"
+            },
+        }
+    },
+    //computed 计算修饰
+    getters: {
+        getUserId():string{
+            return this.user.id
+        }
+    },
+    //mothods 做同步和异步 
+    actions: {
+        async setUser() {
+            const result= await login()         
+            this.setUserId(result)
+        },
+        setUserId(userId:string){        
+            this.user.id=userId
         }
     }
 })

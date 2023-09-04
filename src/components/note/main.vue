@@ -72,14 +72,7 @@ const props = withDefaults(defineProps<Props>(), {
     overflow: hidden;
     text-overflow: ellipsis;
     // white-space: break-spaces; /* 禁止换行 */
-    height: 100%-24px;
-    font-size: 15px;
-    display: -webkit-box;
-    /* 设置为弹性盒子布局 */
-    -webkit-box-orient: vertical;
-    /* 设置为垂直方向 */
-    -webkit-line-clamp: 7;
-    /* 显示的行数 */
-    max-height: calc(20px * 8);
-    /* 行高乘以行数 */
+    height: 141px;
+    font-size: 14px;
+
 }</style>

@@ -1,11 +1,10 @@
 <script setup lang='ts'>
-import { ref, reactive } from 'vue'
+import { ref, onBeforeMount,onBeforeUnmount} from 'vue'
 import card from "../components/firstCard/firstCard.vue"
 import headerbox from '../components/header/header.vue'
 import innerTime from '../components/header/innerTime.vue';
 import footer_vue from '../components/footer/footer.vue';
 import navbox from '../components/nav/index.vue'
-import { message } from 'ant-design-vue';
 import axios from 'axios';
 import { useINTERTIMEStore } from '../store/index';
 import { storeToRefs } from 'pinia'
